@@ -1,9 +1,10 @@
 import tw from "twin.macro";
 import { FaAlignJustify } from "react-icons/fa";
 import {useState} from "react";
+import {FaSistrix} from "react-icons/fa";
 
 const StyledNav = tw.nav`
-  shadow-md
+  // shadow-md
   w-full
   fixed
   top-0
@@ -21,6 +22,7 @@ const InnerDiv = tw.div`
     flex 
     items-center
     ml-2
+    pr-5
 `
 const Ul = tw.ul`
     md:flex
@@ -49,12 +51,19 @@ const Li = tw.li`
 `
 const LiInput = tw.li(Li)`
     w-80
+    flex
+    items-center
+`
+const I = tw.i`
+    text-center
+    relative
+    right-10
 `
 const Input = tw.input`
     bg-gray-200 
     text-gray-900 text-sm 
     rounded-lg focus:outline-none
-    block w-3/4 p-2.5 
+    block w-5/6 p-2.5 
     md:w-full
     hover:border-2 hover:border-saboten
 `
@@ -93,8 +102,10 @@ function Navbar(){
                          </Li>
                      ))
                  }
+                 <Li></Li><Li></Li>
                  <LiInput>
-                     <Input type="text" id="first_name" placeholder="제목이나 설명으로 검색하기"/>
+                         <Input type="text" id="first_name" placeholder="제목이나 설명으로 검색하기"/>
+                         <I><FaSistrix/></I>
                  </LiInput>
              </Ul>
 
