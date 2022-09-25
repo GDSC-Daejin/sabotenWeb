@@ -1,13 +1,19 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import tw from "twin.macro";
 
-const Layout = (props) => {
+const Main = tw.main`
+    pt-28
+    h-screen
+`
+
+function Layout(props){
     return (
         <div>
             <Header />
-            <main>
+            <Main>
                 {props.children}
-            </main>
+            </Main>
             <Footer />
         </div>
     )
