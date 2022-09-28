@@ -1,5 +1,4 @@
 import Layout from "../components/Layout/Layout";
-import Tmp from "../components/Atoms/Tmp";
 
 function BoardPage(){
     return (

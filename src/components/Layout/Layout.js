@@ -3,10 +3,11 @@ import Footer from "./Footer";
 import tw from "twin.macro";
 
 const Main = tw.main`
-    pt-28
-    h-screen
+    pt-20
+    h-auto
+    container
+    block
 `
-
 function Layout(props){
     return (
         <div>

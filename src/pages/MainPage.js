@@ -1,10 +1,14 @@
 import Layout from "../components/Layout/Layout";
-import Tmp from "../components/Atoms/Tmp";
+import MainTop from "../components/Atoms/MainTop";
+import MainMiddle from "../components/Atoms/MainMiddle";
+import MainBottom from "../components/Atoms/MainBottom";
 
 function MainPage(){
     return (
         <Layout>
-            <Tmp/>
+            <MainTop/>
+            <MainMiddle/>
+            <MainBottom/>
         </Layout>
     )
 }
