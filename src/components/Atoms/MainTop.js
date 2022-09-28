@@ -24,7 +24,7 @@ const SecBox = tw.div`
     rounded-[30px]
     text-2xl
     font-semibold
-    md:visible
+    xl:visible
     invisible
     p-5
     bg-gray-100

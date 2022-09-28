@@ -17,7 +17,11 @@ const StyledNav = tw.nav`
 const StyledDiv = tw.div`
     xl:flex 
     bg-white
+    w-full
     h-[80px]
+    top-0
+    absolute
+    xl:relative
     items-center
     justify-around
     container
