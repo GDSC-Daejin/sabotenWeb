@@ -3,7 +3,8 @@ import Footer from "./Footer";
 import tw from "twin.macro";
 
 const Main = tw.main`
-    pt-20
+    xl:pt-8
+    pt-40
     h-auto
     container
     block

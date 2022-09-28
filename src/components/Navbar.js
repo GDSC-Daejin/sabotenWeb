@@ -8,9 +8,11 @@ import styled from "styled-components";
 const StyledNav = tw.nav`
   w-full
   fixed
+  xl:static
   top-0
   left-0
   z-10
+  block
 `
 const StyledDiv = tw.div`
     xl:flex 
@@ -31,9 +33,9 @@ const InnerDiv = tw.div`
     md:mt-2
 `
 const Ul = tw.ul`
-    md:flex
-    md:items-center
-    md:static
+    lg:flex
+    lg:items-center
+    xl:static
     xl:w-auto
     xl:pl-0 pl-9
     bg-white
@@ -41,6 +43,9 @@ const Ul = tw.ul`
     transition-all 
     duration-500 
     ease-in
+    z-10
+    pb-4
+    lg:pb-0
 `
 const A = styled.a((props)=>[
     tw`text-[20px] font-bold p-2`,
@@ -51,11 +56,12 @@ const A = styled.a((props)=>[
 ])
 
 const Li = tw.li`
-    md:my-0
+    xl:my-0
     mr-5 my-7
-    md:mx-6
-    md:relative
-    md:left--28
+    xl:mx-6
+    relative
+    xl:left--28
+    right-0
     duration-200
     md:hover:text-saboten
 `
@@ -63,6 +69,9 @@ const Li = tw.li`
 const LiInput = tw.li`
     w-80
     items-center
+    lg:hidden
+    xl:flex
+    md:flex
     flex
 `
 const I = tw.i`
@@ -87,7 +96,7 @@ const Icon = tw.div`
     absolute
     right-8 top-6 
     cursor-pointer
-    md:hidden
+    lg:hidden
 `
 
 
