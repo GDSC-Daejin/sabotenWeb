@@ -1,63 +1,76 @@
 import tw from "twin.macro";
 import { FaAlignJustify } from "react-icons/fa";
-import {useState} from "react";
+import { useLocation } from 'react-router-dom';
+import {useEffect, useState} from "react";
 import {FaSistrix} from "react-icons/fa";
+import styled from "styled-components";
 
 const StyledNav = tw.nav`
-  // shadow-md
   w-full
   fixed
   top-0
   left-0
+  z-10
 `
 const StyledDiv = tw.div`
-    md:flex 
+    xl:flex 
     bg-white
-    py-4
+    h-[80px]
     items-center
     justify-around
+    container
 `
 const InnerDiv = tw.div`
     cursor-pointer 
     flex 
     items-center
     ml-2
-    pr-5
+    md:w-[170px]
+    w-[150px]
+    mt-5
+    md:mt-2
 `
 const Ul = tw.ul`
     md:flex
     md:items-center
-    absolute
     md:static
+    xl:w-auto
+    xl:pl-0 pl-9
     bg-white
-    md:z-auto z-[-1]
-    left-0
     w-full
-    md:w-auto
-    md:pl-0 pl-9
     transition-all 
     duration-500 
     ease-in
 `
+const A = styled.a((props)=>[
+    tw`text-[20px] font-bold p-2`,
+    props.locationState === 'main' && props.name==='메인' && tw`md:text-saboten md:border-b-4 md:border-saboten`,
+    props.locationState==='category'&& props.name==='카테고리' && tw`md:text-saboten md:border-b-4 md:border-saboten`,
+    props.locationState === 'board' && props.name==='게시판' && tw`md:text-saboten md:border-b-4 md:border-saboten`,
+    props.locationState==='mypage'&& props.name==='마이페이지' && tw`md:text-saboten md:border-b-4 md:border-saboten`
+])
 
 const Li = tw.li`
-    md:ml-8
     md:my-0
     mr-5 my-7
-    font-bold
-    text-xl
-    hover:text-saboten
+    md:mx-6
+    md:relative
+    md:left--28
     duration-200
+    md:hover:text-saboten
 `
-const LiInput = tw.li(Li)`
+
+const LiInput = tw.li`
     w-80
-    flex
     items-center
+    flex
 `
 const I = tw.i`
     text-center
     relative
     right-10
+    hover:text-saboten
+
 `
 const Input = tw.input`
     bg-gray-200 
@@ -65,15 +78,16 @@ const Input = tw.input`
     rounded-lg focus:outline-none
     block w-5/6 p-2.5 
     md:w-full
-    hover:border-2 hover:border-saboten
+    hover:border-2 
+    hover:border-saboten
 `
 
 const Icon = tw.div`
- text-3xl
- absolute
- right-8 top-6 
- cursor-pointer
- md:hidden
+    text-3xl
+    absolute
+    right-8 top-6 
+    cursor-pointer
+    md:hidden
 `
 
 
@@ -85,6 +99,18 @@ function Navbar(){
             {name:"마이페이지", link:"/mypage"},
         ]
     let [open,setOpen] = useState(false);
+    const locationURL = useLocation();
+    let [locationState,setLocationState] = useState('main');
+
+    useEffect(() => {
+        if(locationURL !== undefined && locationURL !== null){
+            const locationIndex = locationURL.pathname.indexOf('/')+1
+            if(locationURL.pathname[locationIndex]==='c') setLocationState('category')
+            else if(locationURL.pathname[locationIndex]==='b') setLocationState('board')
+            else if(locationURL.pathname[locationIndex+1]==='y') setLocationState('mypage')
+            else if(locationURL.pathname[locationIndex+1]==='a') setLocationState('main')
+        }
+    }, [locationState, locationURL])
 
     return(
      <StyledNav>
@@ -93,16 +119,19 @@ function Navbar(){
                 <span><img src="/icon.png" alt="로고"/></span>
                 <span><img src="/logo.png" alt="로고"/></span>
             </InnerDiv>
-             <Icon onClick={()=>setOpen(!open)}><FaAlignJustify/></Icon>
-             <Ul open={open}>
+             <Icon onClick={()=>{setOpen(!open)}}><FaAlignJustify/></Icon>
+             <Ul
+                css={[
+                    open ? tw`top-20` : tw`top-[-490px]`
+                ]}
+             >
                  {
                      Links.map((link)=>(
-                         <Li key={link.name}>
-                             <a href={link.link}>{link.name}</a>
-                         </Li>
+                             <Li key={link.name} >
+                                 <A href={link.link} name={link.name} locationState={locationState}>{link.name}</A>
+                             </Li>
                      ))
                  }
-                 <Li></Li><Li></Li>
                  <LiInput>
                          <Input type="text" id="first_name" placeholder="제목이나 설명으로 검색하기"/>
                          <I><FaSistrix/></I>

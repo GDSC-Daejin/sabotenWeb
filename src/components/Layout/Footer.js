@@ -2,8 +2,10 @@ import tw from "twin.macro";
 
 const StyledDiv = tw.div`
     bg-gray-200
-    h-48
+    h-40
     text-center
+    bottom-0
+    w-full
 `
 const Ul = tw.ul`
     pt-10
