@@ -32,21 +32,26 @@ const InnerDiv = tw.div`
     mt-5
     md:mt-2
 `
-const Ul = tw.ul`
-    lg:flex
-    lg:items-center
-    xl:static
-    xl:w-auto
-    xl:pl-0 pl-9
-    bg-white
-    w-full
-    transition-all 
-    duration-500 
-    ease-in
-    z-10
-    pb-4
-    lg:pb-0
-`
+
+const Ul = styled.ul((props)=>[
+    tw`
+        lg:flex
+        lg:items-center
+        xl:static
+        xl:w-auto
+        xl:pl-0 pl-9
+        bg-white
+        w-full
+        transition-all 
+        duration-500 
+        ease-in
+        z-10
+        pb-4
+        lg:pb-0
+    `,
+    props.open && tw`hidden`
+])
+
 const A = styled.a((props)=>[
     tw`text-[20px] font-bold p-2`,
     props.locationState === 'main' && props.name==='메인' && tw`md:text-saboten md:border-b-4 md:border-saboten`,
@@ -107,7 +112,7 @@ function Navbar(){
             {name:"게시판", link:"/board"},
             {name:"마이페이지", link:"/mypage"},
         ]
-    let [open,setOpen] = useState(false);
+    let [open,setOpen] = useState(true);
     const locationURL = useLocation();
     let [locationState,setLocationState] = useState('main');
 
@@ -129,11 +134,7 @@ function Navbar(){
                 <span><img src="/logo.png" alt="로고"/></span>
             </InnerDiv>
              <Icon onClick={()=>{setOpen(!open)}}><FaAlignJustify/></Icon>
-             <Ul
-                css={[
-                    open ? tw`top-20` : tw`top-[-490px]`
-                ]}
-             >
+             <Ul open={open}>
                  {
                      Links.map((link)=>(
                              <Li key={link.name} >
