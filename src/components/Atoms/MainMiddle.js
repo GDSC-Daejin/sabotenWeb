@@ -1,25 +1,38 @@
 import tw from "twin.macro";
+import RealTimeCard from "./Card/RealTimeCard";
 
 const Box = tw.div`
     items-center
-    border-2
-    border-gray-300
     rounded-[30px]
-    text-2xl
+    text-xl
     md:visible
     invisible
-    p-5
+    py-7
     mt-5
-    h-72
-    bg-gray-100
-    mx-28
+    h-auto
+    xl:mx-28
+    mx-5
 `
-
+const Categoty = tw.div`
+    font-bold
+    text-2xl
+`
+const RealTime = tw.div`
+    flex
+    flex-row
+    flex-nowrap
+    // overflow-x-auto
+`
 function MainMiddle(){
     return (
         <div>
             <Box>
-
+                <Categoty>🔥실시간 HOT</Categoty>
+                <RealTime>
+                    <RealTimeCard/>
+                    <RealTimeCard/>
+                    <RealTimeCard/>
+                </RealTime>
             </Box>
         </div>
     )
