@@ -9,12 +9,18 @@ const MainDiv = tw.div`
     text-center
     grid
     grid-cols-1
-    md:grid-cols-3
-    mx-28
+    xl:grid-cols-3
+    w-11/12
+    ml-5
+    lg:w-auto
+    xl:mx-28
+    mx-5
 `
 const FirstBox = tw.div`
     col-span-2
     mr-5
+    // md:
+    
 `
 const SecBox = tw.div`
     ml-10
@@ -43,7 +49,7 @@ const Button = tw.button`
     p-3
 `
 const KaKaoBtn=tw(Button)`
-    bg-[#FFE812]
+    // bg-[url('/public/btn/kakao_login_medium_wide.png')]
 `
 const GoogleBtn=tw(Button)`
 
